@@ -37,8 +37,9 @@ position = Vector2(0, 173)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="ObjectPooling" type="Node" parent="."]
+[node name="ObjectPooling" type="Node" parent="." node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("3_4wyf3")
+spawn_locations = [NodePath("SpawnPos"), NodePath("SpawnPos2"), NodePath("SpawnPos3")]
 
 [node name="DeleteObject" type="Area2D" parent="ObjectPooling"]
 position = Vector2(0, 286)
