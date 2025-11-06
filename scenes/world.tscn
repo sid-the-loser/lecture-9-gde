@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bp4wfoqf4brgf"]
+[gd_scene load_steps=5 format=3 uid="uid://bp4wfoqf4brgf"]
 
 [ext_resource type="PackedScene" uid="uid://bfbfpgkgmos0d" path="res://prefabs/player_car.tscn" id="1_nnsk1"]
-[ext_resource type="PackedScene" uid="uid://c7oa8pkcy2gs" path="res://prefabs/enemy_car.tscn" id="2_rwgxs"]
 [ext_resource type="Script" uid="uid://b6u4ojk4dg0vy" path="res://scripts/object_pooling.gd" id="3_4wyf3"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nnsk1"]
@@ -34,11 +33,9 @@ rotation = -1.5707964
 shape = SubResource("WorldBoundaryShape2D_nnsk1")
 
 [node name="PlayerCar" parent="." instance=ExtResource("1_nnsk1")]
+position = Vector2(0, 173)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="EnemyCar" parent="." instance=ExtResource("2_rwgxs")]
-position = Vector2(-164, -209)
 
 [node name="ObjectPooling" type="Node" parent="."]
 script = ExtResource("3_4wyf3")
@@ -48,5 +45,14 @@ position = Vector2(0, 286)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectPooling/DeleteObject"]
 shape = SubResource("RectangleShape2D_k0juu")
+
+[node name="SpawnPos" type="Node2D" parent="ObjectPooling"]
+position = Vector2(0, -213)
+
+[node name="SpawnPos2" type="Node2D" parent="ObjectPooling"]
+position = Vector2(-392, -213)
+
+[node name="SpawnPos3" type="Node2D" parent="ObjectPooling"]
+position = Vector2(443, -213)
 
 [connection signal="body_entered" from="ObjectPooling/DeleteObject" to="ObjectPooling" method="_on_delete_object_body_entered"]
