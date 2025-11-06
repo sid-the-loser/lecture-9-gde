@@ -1,11 +1,12 @@
 extends Node
 
 @export var pool_size: int = 10
-@export var pool_object: EnemyCar
 @export var spawn_locations: Array[Node2D]
 @export var spawn_time: float = 2
 
 var spawn_timer = 0
+
+const ENEMY_CAR = preload("uid://c7oa8pkcy2gs")
 
 var df_spawn = false
 
@@ -19,7 +20,11 @@ func _process(delta: float) -> void:
 		
 		
 func spawn_enemy():
-	pass
+	var location: Node2D = spawn_locations[randi_range(0, len(spawn_locations))]
+
+	var enemy = ENEMY_CAR.instantiate()
+	
+	enemy.position = location.position
 
 func _on_delete_object_body_entered(body: Node2D) -> void:
 	if typeof(body) == typeof(EnemyCar):
